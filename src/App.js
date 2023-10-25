@@ -18,30 +18,26 @@ function App() {
 
   React.useEffect(() => {
     const fetchVendors = async () => {
-      axios
-        .get("https://case-backend-e1mh.onrender.com/api/vendors/api/vendors")
-        .then(
-          (response) => {
-            console.log(response);
-            if (response.status === 200) {
-              setOptionsVendor(response.data);
-              console.log(response.data);
-            } else {
-              console.log(`Status code ${response.status}`);
-            }
-          },
-          (error) => {
-            console.log(error);
+      axios.get("https://case-backend-e1mh.onrender.com/api/vendors").then(
+        (response) => {
+          console.log(response);
+          if (response.status === 200) {
+            setOptionsVendor(response.data);
+            console.log(response.data);
+          } else {
+            console.log(`Status code ${response.status}`);
           }
-        );
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
     };
     fetchVendors();
   }, []);
   const fetchMonthlySales = async (data) => {
     axios
-      .get(
-        `https://case-backend-e1mh.onrender.com/api/vendors/api/monthlysales/${data}`
-      )
+      .get(`https://case-backend-e1mh.onrender.com/api/monthlysales/${data}`)
       .then(
         (response) => {
           console.log(response);
